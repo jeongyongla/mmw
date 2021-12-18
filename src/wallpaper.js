@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import mark from './image/mark.png';
 class Wallpaper extends React.Component {
   state = {
     query: ""
@@ -7,6 +8,7 @@ class Wallpaper extends React.Component {
   render() {
     return (
       <Container query={this.state.query}>
+        <img src= {mark} alt="Logo" width={90.8*2} height={51.1*2} />
         <Input
           placeholder="테마를 입력하세요"
           onKeyPress={this.handleInputKeyPress}
@@ -53,5 +55,11 @@ const Input = styled.input`
   font-size: 22px;
   color: white;
 `;
-
+/* const Image = styled.image`
+  top: 0;
+  left: 0;
+  width: 190px;
+  height: 33px;
+  padding: 3px;
+`; */
 export default Wallpaper;
