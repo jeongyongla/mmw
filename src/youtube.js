@@ -33,13 +33,24 @@ class Youtube extends React.Component {
     return (
       
       <Container>
+        <Part1>
             <ReactPlayer
              height = {180.0} width={320} muted={true} 
               url={this.state.url1} playing controls/>
+            {/* <ReactPlayer
+            left={10}
+            height = {180.0} width={320} muted={true}
+            url={this.state.url2} playing controls/> */}
+      </Part1>
+      <Part2>
+            {/* <ReactPlayer
+             height = {180.0} width={320} muted={true} 
+              url={this.state.url1} playing controls/> */}
             <ReactPlayer
+            left={10}
             height = {180.0} width={320} muted={true}
             url={this.state.url2} playing controls/>
-      
+      </Part2>
         </Container>
         
     );
@@ -56,7 +67,7 @@ const Container = styled.div`
   top: 50%;
   /* width: 160.0px;
   height: 90.0px; */
-  width: 300.0px;
+  /* width: 800.0px; */
   height: 100.0px;
   color: white;
   background: 
@@ -68,9 +79,18 @@ const Container = styled.div`
   margin-top: 40px;
   font-size: 40px;
   text-align: center;
+  display: 'flex';
   flex-direction: 'row';
 `;
 
+const Part1 = styled.div`
+position: fixed;
+left: 50px;
+`;
 
+const Part2 = styled.div`
+position: fixed;
+left: 380px;
+`;
 
 export default Youtube;

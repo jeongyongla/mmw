@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import axios from 'axios';
+import Weather from './weather';
 
-import Weather from "./weather";
 class Clock extends React.Component {
   
     state = {
@@ -15,42 +14,6 @@ class Clock extends React.Component {
       }
     render() {
       const { date } = this.state;
-
-      // let result;
-      // if(this.state.cnt===0){
-      //   this.setState({cnt:1});
-      //   navigator.geolocation.getCurrentPosition(aaa);
-      //   function aaa (pos) {
-      //     // const [number, setCity] = useState(0);
-      //     console.log(pos.coords.longitude);
-      //     let url = 'https://api.openweathermap.org/data/2.5/weather?lat=';
-      //     url = url + pos.coords.latitude+'&lon='+pos.coords.longitude+'&appid=15525bfaad597c7c04d48a441d0f3145'
-          
-      //     async function apiload() {
-      //       const response = await axios.get(url);
-      //       return response;
-      //     } 
-      //     // if(this.state.cnt===0){
-      //         apiload().then((value) => 
-      //         {
-      //         result = value.data.name
-      //         // console.log(result)
-      //         // const counter = () => setCity(result);
-      //         // counter();
-      //         // return result;
-      //         // const counter = () => setCity(result);
-      //       }
-              
-
-      // //        main : response.weather.main,
-      // //      icon: response.weather.icon,
-      // //      city:response.name
-      //         )
-              
-      //     // }
-      //   }
-      // }
-
 
         return (
         <Container>
@@ -93,39 +56,6 @@ class Clock extends React.Component {
           date: new Date()
         });
       };
-
-      
-      // weaapi = async() => {
-      //   const response = await axios.get(this.state.url);
-      //   console.log(response); 
-      //   this.setState({
-      //      main : response.weather.main,
-      //      icon: response.weather.icon,
-      //      city:response.name
-      //     });
-      // };  
-      // getweather = () => {
-      //   this.setState({
-      //     url :  'https://api.openweathermap.org/data/2.5/weather?lat='
-      //   });
-        
-
-      //   console.log("@@");
-      //   const latitude ;
-      //   const longitude;
-      //   navigator.geolocation.getCurrentPosition(function(pos) {
-         
-      //      latitude = pos.coords.latitude;
-      //      longitude = pos.coords.longitude;
-      //     // alert("현재 위치는 : " + latitude + ", "+ longitude);
-       
-      //   });
-      //   this.setState({
-      //       url : this.state.url+latitude+'&lon='+longitude+'&appid=15525bfaad597c7c04d48a441d0f3145' 
-      //     });
-      //     console.log(this.state.url);
-      //     this.weaapi();
-      // };
       
       componentDidMount() {
         // this.oneMinuteCall = setInterval(() => this.getDate(), 60000);

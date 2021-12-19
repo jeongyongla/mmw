@@ -33,14 +33,26 @@ function Weather() {
     cnt =1;
 }
 
-
-
   return (
     <>
-      <Te><img src={icon}/>  {city}/{temp}</Te>
+      {/* <Container> */}
+      <Te>{city}/{temp}<img src={icon}/></Te>
+    {/* </Container> */}
     </>
   );
 }
+// const Container = styled.div`
+//   position: absolute;
+//   transform: translate(-50%, -50%);
+//   left: 80%;
+//   top: 22.5%;
+//   color: black;
+//   margin-top: 40px;
+//   font-size: 40px;
+//   text-align: center;
+//   background-color: 
+//   rgba(255, 255, 255, 0.5); 
+// `;
 const Te = styled.div`
   position: relative;
   transform: translate(-50%, 0%);
@@ -51,12 +63,12 @@ const Te = styled.div`
   font-size: 22px;
   font-weight: 600;
 `;
-const Image = styled.image`
-  position: relative;
-  transform: translate(-50%, 0%);
-  left: 50%;
-  width: 60%;
-  background-color: 
-  rgba(255, 255, 255, 0.5),; 
-`;
+// const Image = styled.image`
+//   position: relative;
+//   transform: translate(-50%, 0%);
+//   left: 50%;
+//   width: 60%;
+//   background-color: 
+//   rgba(255, 255, 255, 0.5),; 
+// `;
 export default Weather;
