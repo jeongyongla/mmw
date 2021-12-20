@@ -4,9 +4,9 @@ import axios from 'axios';
 let cnt =0;
 function Weather() {
   
-  const [city, setcity] = useState("st city");
+  const [city, setcity] = useState("city");
   const [icon, setIcon] = useState("");
-  const [temp, setTemp] = useState("st teno");
+  const [temp, setTemp] = useState("tem");
 
   if(cnt===0){
       navigator.geolocation.getCurrentPosition(aaa);
@@ -36,7 +36,7 @@ function Weather() {
   return (
     <>
       {/* <Container> */}
-      <Te>{city}/{temp}<img src={icon}/></Te>
+      <Te>&nbsp;      &nbsp;{city}/{temp}<img src={icon}/></Te>
     {/* </Container> */}
     </>
   );

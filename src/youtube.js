@@ -81,6 +81,7 @@ const Container = styled.div`
   text-align: center;
   display: 'flex';
   flex-direction: 'row';
+  /* visibility: hidden; */
 `;
 
 const Part1 = styled.div`
