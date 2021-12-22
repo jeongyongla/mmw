@@ -6,7 +6,7 @@ const clientId = "230889010194-2225qvihcj6nqtn66mkoud8p2fnlqmmn.apps.googleuserc
 export default function GoogleLoginBtn({}){
     const onSuccess = async(response) => {
         const { googleId, profileObj : { email, name } } = response;
-        // console.log(response)
+        console.log(response)
         alert(response.Ba)
         // await onGoogleLogin (
         //   구글 로그인 성공시 서버에 전달할 데이터
