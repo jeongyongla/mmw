@@ -1,63 +1,8 @@
-// import React, { useState } from "react";
-// // import reactTriggerChange from "react-trigger-change" 
-// const Check = () => {
-//   const formData = [
-//     { id: 1, name: "딸기" },
-//     { id: 2, name: "바나나" },
-//     { id: 3, name: "피자" },
-//     { id: 4, name: "불고기" },
-//     { id: 5, name: "김치" },
-//     { id: 6, name: "볶음밥" },
-//     { id: 7, name: "쌀국수" },
-//     { id: 8, name: "육개장" },
-//     { id: 9, name: "커피" },
-//   ];
-
-//   const [isChecked, setIsChecked] = useState(false); //체크 여부
-//   const [checkedItems, setCheckedItems] = useState(new Set());//체크된 요소들
-
-//   const checkHandler = ({ target }) => {
-//     console.log(target);
-//     setIsChecked(!isChecked);
-//     checkedItemHandler(target.parentNode, target.value, target.checked);
-//   };
-
-//   const checkedItemHandler = (box, id, isChecked) => {
-//     if (isChecked) { //체크 되었을때
-//       checkedItems.add(id); //체크시 삽입
-//       setCheckedItems(checkedItems); //체크 요소 넣어주기
-//       box.style.backgroundColor = "#F6CB44"; //스타일 변경
-//     } else if (!isChecked && checkedItems.has(id)) { //체크가 안되었고, id가 있을때(클릭 2번시)
-//       checkedItems.delete(id); //체크 두번시 삭제
-//       setCheckedItems(checkedItems);
-//       box.style.backgroundColor = "#fff";
-//     }
-//     // console.log(checkedItems);
-//     return checkedItems;
-//   };
-//   let node = document.getElementsByName("딸기")[0];
-//   // reactTriggerChange(node);
-//   return (
-//     <div className="contStyle">
-//       {formData.map((item) => (
-//         <label key={item.id} className="innerBox">
-//           <input
-//             name={item.name}
-//             type="checkbox"
-//             value={item.name}
-//             onChange={(e) => checkHandler(e)}
-//           />
-//           <div>{item.name}</div>
-//         </label>
-//       ))}
-//     </div>
-//   );
-// };
-// export default Check;
 import Toggle from 'react-styled-toggle'
 import React from "react";
 import styled from "styled-components";
 import $ from "jquery";
+import axios from 'axios';
 class MC extends React.Component {
   
   state = {
@@ -102,11 +47,11 @@ class MC extends React.Component {
   
   // console.log(document.getElementsByClassName("wea")[0])
   let formData = [
-    { id: 1, name: "model1" },
-    { id: 2, name: "model2" },
-    { id: 3, name: "model3" },
-    { id: 4, name: "model4" },
-    { id: 5, name: "model5" },
+    { id: 1, name: "시계/날씨" },
+    { id: 2, name: "검색창" },
+    { id: 3, name: "유튜브" },
+    { id: 4, name: "메모" },
+    { id: 5, name: "사이트" },
   ];
   // if(this.state.value1===1){
     
@@ -130,17 +75,22 @@ class MC extends React.Component {
     );
   
   }
-  handler1 = event => {
+ 
+  
+  handler1 = event => { 
+    function posting(pid,pvalue){
+    axios.post('http://@@@@@@@@@@@@@@@@@@@@', {params: {  
+      id: pid, 
+      value: pvalue}});
+   }
     let tmp = (event.target.value)
-    if(tmp ==1){if(this.state.value1===1){this.setState({value1: 0})}else{this.setState({value1: 1})} }
-    if(tmp ==2){if(this.state.value2===1){this.setState({value2: 0})}else{this.setState({value1: 2})} }
-    if(tmp ==3){if(this.state.value3===1){this.setState({value3: 0})}else{this.setState({value1: 3})} }
-    if(tmp ==4){if(this.state.value4===1){this.setState({value4: 0})}else{this.setState({value1: 4})} }
-    if(tmp ==5){if(this.state.value5===1){this.setState({value5: 0})}else{this.setState({value1: 5})} }
-      
+    if(tmp ===1){if(this.state.value1===1){this.setState({value1: 0});posting(tmp,0)}else{this.setState({value1: 1});posting(tmp,1)}}
+    if(tmp ===2){if(this.state.value2===1){this.setState({value2: 0});posting(tmp,0)}else{this.setState({value1: 2});posting(tmp,1)}}
+    if(tmp ===3){if(this.state.value3===1){this.setState({value3: 0});posting(tmp,0)}else{this.setState({value1: 3});posting(tmp,1)}}
+    if(tmp ===4){if(this.state.value4===1){this.setState({value4: 0});posting(tmp,0)}else{this.setState({value1: 4});posting(tmp,1)}}
+    if(tmp ===5){if(this.state.value5===1){this.setState({value5: 0});posting(tmp,0)}else{this.setState({value1: 5});posting(tmp,1)}};
   };
 }
-
 
 
 const Container = styled.div`

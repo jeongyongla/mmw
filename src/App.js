@@ -15,7 +15,7 @@ class App extends React.Component {
     if(a==1){
        return (
       <Container>
-        {/* <Wallpaper></Wallpaper> */}
+        <Wallpaper></Wallpaper>
         <Clock></Clock>
         <Search></Search>
         <Youtube></Youtube>

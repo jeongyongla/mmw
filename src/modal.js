@@ -10,20 +10,9 @@ export const Modal = () => {
     };
     
     return (
-        // {formData.map((item) => (
-        //     <label key={item.id} className="innerBox">
-        //       <input
-        //         name={item.name}
-        //         type="checkbox"
-        //         value={item.name}
-        //         onChange={(e) => checkHandler(e)}
-        //       />
-        //       <div>{item.name}</div>
-        //     </label>
-        //   ))}
         <Container>
-            <MC/>
-      <>
+           <MC/>
+      
       <Container>
      
       {isOpen ===false ?
@@ -31,13 +20,13 @@ export const Modal = () => {
       : <ModalBackdrop onClick={handleModal}>
       <ModalView>
         <div className="close-btn" onClick={handleModal}>&times;</div>
-        {/* <div className="desc">HELLO WORLD!</div> */}
+        {/* <div className="desc">HELLO WORLD!</div> */} 
       </ModalView>
     </ModalBackdrop>
       }
   
       </Container>
-      </>
+      
       
       </Container>
     );
