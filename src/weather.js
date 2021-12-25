@@ -26,17 +26,19 @@ function Weather() {
             fcity()
             ficon()
             ftemp()
+          
           }
             )
       }
     // console.log("test")
+
     cnt =1;
-}
+  }
 
   return (
     <>
       {/* <Container> */}
-      <Te>&nbsp;      &nbsp;{city}/{temp}<img src={icon}/></Te>
+      <Te>&nbsp;&nbsp;{city}/{temp}<img src={icon}/></Te>
     {/* </Container> */}
     </>
   );

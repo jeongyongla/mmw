@@ -36,7 +36,7 @@ class Youtube extends React.Component {
         <Part1>
             <ReactPlayer
              height = {180.0} width={320} muted={true} 
-              url={this.state.url1} playing controls/>
+              url={this.state.url1} playing={false} controls/>
             {/* <ReactPlayer
             left={10}
             height = {180.0} width={320} muted={true}
@@ -49,7 +49,7 @@ class Youtube extends React.Component {
             <ReactPlayer
             left={10}
             height = {180.0} width={320} muted={true}
-            url={this.state.url2} playing controls/>
+            url={this.state.url2} playing={false} controls/>
       </Part2>
         </Container>
         

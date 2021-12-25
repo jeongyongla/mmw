@@ -3,12 +3,22 @@ import styled from "styled-components";
 import mark from './image/mark.png';
 class Wallpaper extends React.Component {
   state = {
-    query: ""
+    query: "",
+    cnt:0     //  0로그인전 1로그인후 
   };
   render() {
+    if(this.state.cnt<2){
+       if(this.props.name!==this.state.query){
+        // alert(this.props.name)
+        this.setState({
+        query:this.props.name,
+        cnt:this.state.cnt+1
+        });
+      }
+    }
     return (
       <Container query={this.state.query}>
-        <img src= {mark} alt="Logo" width={90.8*2} height={51.1*2} onClick={this.onlogoclick}/>
+        <img src= {mark} alt="Logo" width={90.8*1.5} height={51.1*1.5} onClick={this.onlogoclick}/>
         <Input
           placeholder="테마를 입력하세요"
           onKeyPress={this.handleInputKeyPress}

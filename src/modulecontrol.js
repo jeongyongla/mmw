@@ -6,16 +6,24 @@ import axios from 'axios';
 class MC extends React.Component {
   
   state = {
-    value1 : 1,   //0 none 1 choose
-    value2 : 1,
+    value1 : 0,   //0 none 1 choose
+    value2 : 0,
     value3 : 0,
     value4 : 0,
     value5 : 0,
     cnt :0
   }; 
+  
   render() {
-    // alert(this.state.value1)
-   if(this.state.cnt===0){
+   if(this.state.cnt<2){
+    this.setState({
+          value1:this.props.mi.value1,
+          value2:this.props.mi.value2,
+          value3:this.props.mi.value3,
+          value4:this.props.mi.value4,
+          value5:this.props.mi.value5
+    });
+    
     if(this.state.value1===1){
       $(document).ready(function(){
       $('#1').trigger('click');
@@ -41,7 +49,7 @@ class MC extends React.Component {
       $('#5').trigger('click');
       });
     }
-      this.setState({cnt:1})
+      this.setState({cnt:this.state.cnt+1})
    }
    
   
