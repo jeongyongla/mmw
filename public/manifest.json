@@ -13,9 +13,9 @@
   ],
   "persistent": true
   },
-  "chrome_url_overrides": {
-    "newtab": "index.html"
-  },
+  // "chrome_url_overrides": {
+  //   "newtab": "index.html"
+  // },
   "browser_action": {
     "default_icon": "mark.png",
     "default_popup": "popup.html"

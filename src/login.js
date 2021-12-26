@@ -40,7 +40,8 @@ export default function GoogleLoginBtn({}){
         fch(mi)
         fid(response.googleId);
         $('#goolog').hide();
-        $('#mccon').show();
+        $('#aftercon').show();
+        
         goo.name=response.yu.nf;
         goo.url=response.profileObj.imageUrl;
         fgoo(goo)
@@ -92,9 +93,9 @@ export default function GoogleLoginBtn({}){
                     onFailure={onFailure}
                     />
                     </Logg>
-                    <Logg3><img id="im"width={30} height={30} padding={0} src={goore.url}/><Text>{goore.name}</Text></Logg3>
+                    <Logg3 id={"aftercon"}hidden={true}><img id="im"width={30} height={30} padding={0} src={goore.url}/><Text>{goore.name}</Text></Logg3>
                 <Logg2 id={"mccon"}hidden={true}><MC id ={id} mi ={miob}/></Logg2>
-                <Todo  id ={id}/>
+                <Logg4 id={"todocon"}hidden={true}><Todo  id ={id}/></Logg4>
                 </Container>
         </div>
     )
@@ -137,7 +138,25 @@ const Logg3 = styled.div`
 const Logg2 = styled.div`
    position: absolute;
   top: 20%;
-  right: 10%;
+  right: 7%;
+  /* width: 500px;
+  height: 200px; */
+  color: black;
+  /* background-color: 
+  rgba(20, 20, 20, 0.1); */
+    /* linear-gradient(
+      rgba(20, 20, 20, 0.1),
+      rgba(20, 20, 20, 0)
+    ),white; */
+  margin-top: 40px;
+  font-size: 40px;
+  text-align: center;
+`;
+
+const Logg4 = styled.div`
+   position: absolute;
+  top: 40%;
+  right: 27%;
   /* width: 500px;
   height: 200px; */
   color: black;

@@ -117,7 +117,7 @@ class MC extends React.Component {
     { id: 2, name: "검색창" },
     { id: 3, name: "유튜브" },
     { id: 4, name: "메모" },
-    { id: 5, name: "사이트" },
+    // { id: 5, name: "사이트" },
   ];
   // if(this.state.value1===1){
     console.log(this.state)
@@ -156,7 +156,7 @@ class MC extends React.Component {
     if(tmp ==='1'){if(this.state.value1===1){this.setState({value1: 0});posting(tmp,0);$("#clockcon").hide()}else{this.setState({value1: 1});posting(tmp,1);$("#clockcon").show()}}
     if(tmp ==='2'){if(this.state.value2===1){this.setState({value2: 0});posting(tmp,0);$("#searchcon").hide()}else{this.setState({value2: 1});posting(tmp,1);$("#searchcon").show()}}
     if(tmp ==='3'){if(this.state.value3===1){this.setState({value3: 0});posting(tmp,0);$("#youcon").hide()}else{this.setState({value3: 1});posting(tmp,1);$("#youcon").show()}}
-    if(tmp ==='4'){if(this.state.value4===1){this.setState({value4: 0});posting(tmp,0);$("#memocon").hide()}else{this.setState({value4: 1});posting(tmp,1);$("#memocon").show()}}
+    if(tmp ==='4'){if(this.state.value4===1){this.setState({value4: 0});posting(tmp,0);$("#todocon").hide()}else{this.setState({value4: 1});posting(tmp,1);$("#todocon").show()}}
     if(tmp ==='5'){if(this.state.value5===1){this.setState({value5: 0});posting(tmp,0);$("#sitecon").hide()}else{this.setState({value5: 1});posting(tmp,1);$("#sitecon").show()}}
     // console.log(this.state)
   };
@@ -170,7 +170,7 @@ const Container = styled.div`
   left: 0%;
   top: 20%;
   width: 400px;
-  height: 200px;
+  height: 150px;
   color: black;
   background-color: 
   rgba(255, 255, 255, 0.5); 

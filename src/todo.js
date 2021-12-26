@@ -53,8 +53,8 @@ class Todo extends React.Component {
 const Container = styled.div`
   position: absolute;
   /* transform: translate(-50%, -50%); */
-  right: 5%;
-  top: 50%;
+  /* right: 0%; */
+  /* top: 50%; */
   /* width: 160.0px;
   height: 90.0px; */
   width: 340.0px;
