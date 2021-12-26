@@ -8,7 +8,7 @@ class Search extends React.Component {
   render() {
   
     return (
-      <Container>
+      <Container id={"searchcon"}hidden={true}>
         <Input
           className="input"
           // placeholder= {this.state.search}

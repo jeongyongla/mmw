@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import mark from './image/mark.png';
+import setup from './image/setup.png'
+import $ from "jquery";
 class Wallpaper extends React.Component {
   state = {
     query: "",
     cnt:0     //  0로그인전 1로그인후 
   };
   render() {
-    if(this.state.cnt<2){
-       if(this.props.name!==this.state.query){
-        // alert(this.props.name)
+    if(this.state.cnt==0){
+       if(this.props.name!==""){
         this.setState({
         query:this.props.name,
         cnt:this.state.cnt+1
@@ -23,10 +24,14 @@ class Wallpaper extends React.Component {
           placeholder="테마를 입력하세요"
           onKeyPress={this.handleInputKeyPress}
         ></Input>
+        {/* <Button onClick={this.handlesetup}/> */}
+        <img src= {setup} alt="Logo" align={"right"} width={40} height={40} onClick={this.handlesetup}/>
       </Container>
     );
   }
-
+  handlesetup=event=>{
+      $('#mccon').show();
+  }
   handleInputKeyPress = event => {
     if (event.key === "Enter") {
       this.setState({
@@ -62,7 +67,7 @@ const Container = styled.div`
 const Input = styled.input`
   position: absolute;
   top: 0;
-  right: 0;
+  right: 40px;
   width: 190px;
   height: 33px;
   padding: 3px;
@@ -72,6 +77,14 @@ const Input = styled.input`
   font-size: 22px;
   color: white;
 `;
+/* const Button = styled.button`
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 190px;
+  height: 33px;
+  padding: 3px;
+`; */
 /* const Image = styled.image`
   top: 0;
   left: 0;

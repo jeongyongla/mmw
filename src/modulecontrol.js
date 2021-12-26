@@ -11,46 +11,104 @@ class MC extends React.Component {
     value3 : 0,
     value4 : 0,
     value5 : 0,
-    cnt :0
+    cnt :0 ,   //0nomal 1 login 
+    cnt2 :0
   }; 
   
   render() {
-   if(this.state.cnt<2){
-    this.setState({
-          value1:this.props.mi.value1,
-          value2:this.props.mi.value2,
-          value3:this.props.mi.value3,
-          value4:this.props.mi.value4,
-          value5:this.props.mi.value5
-    });
-    
-    if(this.state.value1===1){
-      $(document).ready(function(){
-      $('#1').trigger('click');
-      });
-    }
-    if(this.state.value2===1){
-      $(document).ready(function(){
-      $('#2').trigger('click');
-      });
-    }
-    if(this.state.value3===1){
-      $(document).ready(function(){
-      $('#3').trigger('click');
-      });
-    }
-    if(this.state.value4===1){
-      $(document).ready(function(){
-      $('#4').trigger('click');
-      });
-    }
-    if(this.state.value5===1){
-      $(document).ready(function(){
-      $('#5').trigger('click');
-      });
-    }
-      this.setState({cnt:this.state.cnt+1})
-   }
+   if(this.state.cnt==0){
+     if(this.props.mi.check==1){
+      if(this.state.value1===1){
+        $(document).ready(function(){
+        $('#1').trigger('click');
+        });
+      }
+      if(this.state.value2===1){
+        $(document).ready(function(){
+        $('#2').trigger('click');
+        });
+      }
+      if(this.state.value3===1){
+        $(document).ready(function(){
+        $('#3').trigger('click');
+        });
+      }
+      if(this.state.value4===1){
+        $(document).ready(function(){
+        $('#4').trigger('click');
+        });
+      }
+      if(this.state.value5===1){
+        $(document).ready(function(){
+        $('#5').trigger('click');
+        });
+      }
+      if(this.props.mi.value1===1){
+        $(document).ready(function(){
+        $('#1').trigger('click');
+        });
+      }
+      if(this.props.mi.value2===1){
+        $(document).ready(function(){
+        $('#2').trigger('click');
+        });
+      }
+      if(this.props.mi.value3===1){
+        $(document).ready(function(){
+        $('#3').trigger('click');
+        });
+      }
+      if(this.props.mi.value4===1){
+        $(document).ready(function(){
+        $('#4').trigger('click');
+        });
+      }
+      if(this.props.mi.value5===1){
+        $(document).ready(function(){
+        $('#5').trigger('click');
+        });
+      }
+       this.setState({
+          // value1:this.props.mi.value1,
+          // value2:this.props.mi.value2,
+          // value3:this.props.mi.value3,
+          // value4:this.props.mi.value4,
+          // value5:this.props.mi.value5,
+          cnt:1
+    }); 
+  }
+}
+// if(this.state.cnt2==1){
+//     if(this.state.cnt==1){
+//         if(this.state.value1===1){
+//           $(document).ready(function(){
+//           $('#1').trigger('click');
+//           });
+//         }
+//         if(this.state.value2===1){
+//           $(document).ready(function(){
+//           $('#2').trigger('click');
+//           });
+//         }
+//         if(this.state.value3===1){
+//           $(document).ready(function(){
+//           $('#3').trigger('click');
+//           });
+//         }
+//         if(this.state.value4===1){
+//           $(document).ready(function(){
+//           $('#4').trigger('click');
+//           });
+//         }
+//         if(this.state.value5===1){
+//           $(document).ready(function(){
+//           $('#5').trigger('click');
+//           });
+//         }
+//         this.setState({cnt:2})
+//       }
+//     }
+        
    
   
   // console.log(document.getElementsByClassName("wea")[0])
@@ -62,9 +120,10 @@ class MC extends React.Component {
     { id: 5, name: "사이트" },
   ];
   // if(this.state.value1===1){
-    
+    console.log(this.state)
     return (
       <Container>
+        <Button onClick={this.handlesetup}>X</Button>
          {formData.map((item) => (
         <label id={item.id} key={item.id} className="innerBox"value={item.name}>
              <Toggle
@@ -83,20 +142,23 @@ class MC extends React.Component {
     );
   
   }
- 
   
+  handlesetup=event=>{
+    $('#mccon').hide();
+  }
   handler1 = event => { 
     function posting(pid,pvalue){
     axios.post('http://@@@@@@@@@@@@@@@@@@@@', {params: {  
       id: pid, 
       value: pvalue}});
    }
-    let tmp = (event.target.value)
-    if(tmp ===1){if(this.state.value1===1){this.setState({value1: 0});posting(tmp,0)}else{this.setState({value1: 1});posting(tmp,1)}}
-    if(tmp ===2){if(this.state.value2===1){this.setState({value2: 0});posting(tmp,0)}else{this.setState({value1: 2});posting(tmp,1)}}
-    if(tmp ===3){if(this.state.value3===1){this.setState({value3: 0});posting(tmp,0)}else{this.setState({value1: 3});posting(tmp,1)}}
-    if(tmp ===4){if(this.state.value4===1){this.setState({value4: 0});posting(tmp,0)}else{this.setState({value1: 4});posting(tmp,1)}}
-    if(tmp ===5){if(this.state.value5===1){this.setState({value5: 0});posting(tmp,0)}else{this.setState({value1: 5});posting(tmp,1)}};
+    let tmp = (event.target.value);
+    if(tmp ==='1'){if(this.state.value1===1){this.setState({value1: 0});posting(tmp,0);$("#clockcon").hide()}else{this.setState({value1: 1});posting(tmp,1);$("#clockcon").show()}}
+    if(tmp ==='2'){if(this.state.value2===1){this.setState({value2: 0});posting(tmp,0);$("#searchcon").hide()}else{this.setState({value2: 1});posting(tmp,1);$("#searchcon").show()}}
+    if(tmp ==='3'){if(this.state.value3===1){this.setState({value3: 0});posting(tmp,0);$("#youcon").hide()}else{this.setState({value3: 1});posting(tmp,1);$("#youcon").show()}}
+    if(tmp ==='4'){if(this.state.value4===1){this.setState({value4: 0});posting(tmp,0);$("#memocon").hide()}else{this.setState({value4: 1});posting(tmp,1);$("#memocon").show()}}
+    if(tmp ==='5'){if(this.state.value5===1){this.setState({value5: 0});posting(tmp,0);$("#sitecon").hide()}else{this.setState({value5: 1});posting(tmp,1);$("#sitecon").show()}}
+    // console.log(this.state)
   };
 }
 
@@ -117,5 +179,14 @@ const Container = styled.div`
   text-align: center;
   /* visibility:hidden; */
 `;
-
+const Button = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0%;
+  width: 33px;
+  height: 33px;
+  padding: 3px;
+  background-color: 
+  rgba(255, 255, 255, 1); 
+`;
 export default MC;

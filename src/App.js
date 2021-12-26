@@ -5,6 +5,7 @@ import Clock from "./clock";
 import Search from "./search";
 import Youtube from "./youtube";
 import GoogleLoginBtn from "./login"
+// import History from "../public/background";
 import Test from "./test"
 import Weather from "./weather";
 // import Check from "./modulecontrol";
@@ -22,7 +23,7 @@ class App extends React.Component {
         <Clock></Clock>
         <Search></Search>
         <Youtube></Youtube>
-        
+        {/* <History/> */}
         {/* <Check/> */}
         {/* <Modal/> */}
         <Todo/>

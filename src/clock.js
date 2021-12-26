@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 import Weather from './weather';
-
 class Clock extends React.Component {
   
     state = {
@@ -14,9 +13,8 @@ class Clock extends React.Component {
       }
     render() {
       const { date } = this.state;
-
         return (
-        <Container>
+        <Container >
            <CurTime>
             {date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}
             {/* &nbsp;시&nbsp; */}
@@ -85,7 +83,7 @@ const Container = styled.div`
     ),white; */
   margin-top: 40px;
   font-size: 40px;
-  text-align: center;
+  text-align: center;  
 `;
 
 const CurDate = styled.div`

@@ -38,7 +38,7 @@ function Weather() {
   return (
     <>
       {/* <Container> */}
-      <Te>&nbsp;&nbsp;{city}/{temp}<img src={icon}/></Te>
+      <Te id={"clockcon"}hidden={true}>&nbsp;&nbsp;{city}/{temp}<img src={icon}/></Te>
     {/* </Container> */}
     </>
   );
