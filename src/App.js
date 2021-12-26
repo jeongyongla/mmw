@@ -5,12 +5,7 @@ import Clock from "./clock";
 import Search from "./search";
 import Youtube from "./youtube";
 import GoogleLoginBtn from "./login"
-// import History from "../public/background";
-import Test from "./test"
-import Weather from "./weather";
-// import Check from "./modulecontrol";
-import Modal from "./modal";
-import Todo from "./todo";
+// import Todo from "./todo";
 class App extends React.Component {
   render() { 
     let a =1;
@@ -26,7 +21,7 @@ class App extends React.Component {
         {/* <History/> */}
         {/* <Check/> */}
         {/* <Modal/> */}
-        <Todo/>
+        {/* <Todo/> */}
         {/* <Test/> */}
       </Container>
     );

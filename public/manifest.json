@@ -6,7 +6,7 @@
   "icons": {
     "128": "mark.png"
   },
-  "permissions": [ "topSites","history"],
+  "permissions": ["topSites","history","http://localhost:3000"],
   "background": {
   "scripts": [
     "background.js"

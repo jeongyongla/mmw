@@ -7,7 +7,7 @@ class Todo extends React.Component {
       };
   render() { 
     // console.log("rend");
-    console.log(this.state.todoList);
+    // console.log(this.state.todoList);
     return (
       <Container>
         <Input placeholder="오늘 할 일" onKeyPress={this.handleInputKeyPress}></Input>
@@ -34,12 +34,13 @@ class Todo extends React.Component {
     if (window.confirm("목록에서 지우시겠습니까?")) {
         // alert(index.target.values)
         // console.log(index.target.innerText)
+        // console.log(this.state.todoList.length)
         for(let i = 0; i < this.state.todoList.length; i++) {
           if(this.state.todoList[i] === index.target.innerText)  {
             this.state.todoList.splice(i, 1);
             i--;
+            break;
           }
-          break;
         }
         this.setState(state => ({todoList:this.state.todoList}));
         // this.setState(state => ({todoList:this.state.todoList.filter((element) => element !== index.target.innerText)}));

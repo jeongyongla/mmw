@@ -5,6 +5,7 @@ import axios from 'axios';
 import Wallpaper from './wallpaper';
 import MC from "./modulecontrol";
 import $ from "jquery";
+import Todo from "./todo";
 const clientId = "230889010194-2225qvihcj6nqtn66mkoud8p2fnlqmmn.apps.googleusercontent.com";
 
 export default function GoogleLoginBtn({}){
@@ -22,6 +23,8 @@ export default function GoogleLoginBtn({}){
     }
     const [name, setname] = useState("");
     const fname = (re) => setname(re);
+    const [id, setid] = useState("");
+    const fid = (re) => setid(re);
     const [miob, setch] = useState("");
     const fch = (re) => setch(re);
     const [goore, setgoo] = useState("");
@@ -35,7 +38,9 @@ export default function GoogleLoginBtn({}){
         fname("flower")
         mi.check=1
         fch(mi)
+        fid(response.googleId);
         $('#goolog').hide();
+        $('#mccon').show();
         goo.name=response.yu.nf;
         goo.url=response.profileObj.imageUrl;
         fgoo(goo)
@@ -46,8 +51,7 @@ export default function GoogleLoginBtn({}){
         //    }
         // );
         ///////////////////////////////////////////////////////////////////////////
-        // alert(name)
-        
+       
     }
     
     // onSuccess().then((value) => 
@@ -79,7 +83,7 @@ export default function GoogleLoginBtn({}){
     return(
         <div>
             <Container>
-                <Wallpaper name={name}/> 
+                <Wallpaper id ={id} name={name}/> 
                 <Logg id = {"goolog"}>
                 <GoogleLogin
                     clientId={clientId}
@@ -88,8 +92,9 @@ export default function GoogleLoginBtn({}){
                     onFailure={onFailure}
                     />
                     </Logg>
-                    <Logg3><img width={30} height={30} padding={0} src={goore.url}/><Text>{goore.name}</Text></Logg3>
-                <Logg2 id={"mccon"}hidden={true}><MC mi ={miob}/></Logg2>
+                    <Logg3><img id="im"width={30} height={30} padding={0} src={goore.url}/><Text>{goore.name}</Text></Logg3>
+                <Logg2 id={"mccon"}hidden={true}><MC id ={id} mi ={miob}/></Logg2>
+                <Todo  id ={id}/>
                 </Container>
         </div>
     )
