@@ -21,7 +21,7 @@ class Todo extends React.Component {
     // console.log(this.todoList)
     return (
       <Container>
-        <Input placeholder="오늘 할 일" onKeyPress={this.handleInputKeyPress}></Input>
+        <Input placeholder="To Do List" onKeyPress={this.handleInputKeyPress}></Input>
         {this.state.todoList.map(todo => (
       <Text key={todo} name={todo} onClick={(e) => this.handleClickRemove(e)}>{todo}</Text>
         ))}
@@ -89,6 +89,7 @@ const Container = styled.div`
   height: 90.0px; */
   width: 340.0px;
   height: 200.0px;
+  padding: 7px;
   color: white;
   background: 
       rgba(255, 255, 255, 0.5)
@@ -101,6 +102,7 @@ const Container = styled.div`
   /* flex-direction: 'row'; */
   /* visibility: hidden; */
   word-break: break-all;
+  white-space:pre-wrap;
 `;
 
 const Input = styled.input`
@@ -113,19 +115,25 @@ const Input = styled.input`
   background: transparent;
   font-size: 22px;
   color: black;
+  display: block;
   font-weight: 600;
 `;
 const Text = styled.text`
+  /* position: absolute; */
   width: 300px;
   height: 33px;
   padding: 7px;
   outline: none;
-  /* border: 1px solid silver; */
+  border: 1px solid silver;
   border-radius: 11px;
   background: transparent;
   font-size: 22px;
   color: black;  
   font-weight: 600;
+  display: block;
+  text-align: left; 
+  white-space:nowrap;
+  /* display: inline-block; */
 `;
 
 export default Todo;

@@ -19,14 +19,31 @@ chrome.topSites.get((arr) => {
     })
     document.getElementById("99").className='http://localhost:3000';
     document.getElementById("99").addEventListener("click",winclick);
+    document.getElementById("77").addEventListener("click",tabclose);
+    document.getElementById("88").addEventListener("click",tabopen);
   });
 function winclick(params) {
   window.open(params.target.className);
 };
-
-chrome.tabs.getSelected(null, function(tab){
-  console.log(tab);
-});
+let list=[]
+function tabclose() {
+    chrome.tabs.query({currentWindow: true}, function(tabs) {
+     console.log(tabs)
+      list=tabs
+      tabs.forEach(function(tab) {
+        if(tab.active==false){
+          chrome.tabs.remove(tab.id);
+        }
+      });
+    });
+};
+function tabopen() {
+  list.forEach(function(tab) {
+    if(tab.active==false){
+      window.open(tab.url);
+    }
+  })
+}
 // function home() {
 //   window.open('http://localhost:3000');
 // }
