@@ -42,7 +42,7 @@ class Todo extends React.Component {
      const data = {  
       id: this.props.id, 
       content: value, 
-      on : 0}
+      on : 1}
       let sendata = JSON.stringify(data)
       axios.post('@@@@@@@@@@@@@@@@@@',sendata, {
             headers: {
@@ -68,7 +68,7 @@ class Todo extends React.Component {
         const data = {  
           id: this.props.id, 
           content: index.target.innerText, 
-          on : 1}
+          on : 0}
           let sendata = JSON.stringify(data)
           axios.post('@@@@@@@@@@@@@@@@@@',sendata, {
                 headers: {

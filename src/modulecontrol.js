@@ -147,9 +147,10 @@ class MC extends React.Component {
     $('#mccon').hide();
   }
   handler1 = event => { 
+    let sid = this.props.id
     function posting(pid,pvalue){
     axios.post('http://@@@@@@@@@@@@@@@@@@@@', {params: {  
-      id: this.props.id,
+      id: sid,
       content: pid, 
       on: pvalue}});
    }
