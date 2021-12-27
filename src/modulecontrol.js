@@ -151,7 +151,7 @@ class MC extends React.Component {
     function posting(pid,pvalue){
     axios.post('http://@@@@@@@@@@@@@@@@@@@@', {params: {  
       id: sid,
-      content: pid, 
+      moduleId: pid, 
       on: pvalue}});
    }
     let tmp = (event.target.value);
