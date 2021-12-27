@@ -21,6 +21,7 @@ export default function GoogleLoginBtn({}){
         name : "",
         url : ""
     }
+    const list =[]
     const [name, setname] = useState("");
     const fname = (re) => setname(re);
     const [id, setid] = useState("");
@@ -29,33 +30,45 @@ export default function GoogleLoginBtn({}){
     const fch = (re) => setch(re);
     const [goore, setgoo] = useState("");
     const fgoo = (re) => setgoo(re);
+    const [memo, setmemo] = useState("");
+    const fmemo = (re) => setmemo(re);
     const onSuccess = async(response) => {
         // const { googleId, profileObj : { email, name } } = response;
         // console.log(response)
         // console.log(response.googleID)
         // alert(response.yu.nv)
-        ///////////////////////////////////////////////////////////////////////////
-        fname("flower")
-        mi.check=1
-        fch(mi)
-        fid(response.googleId);
-        $('#goolog').hide();
-        $('#aftercon').show();
-        
         goo.name=response.yu.nf;
         goo.url=response.profileObj.imageUrl;
         fgoo(goo)
-        // serlogin(response).then((axiresponse) => 
-        //    {
-        //        fname(axiresponse.wall) //value.wall
-        //        mi.value1=axiresponse.value1//valu.모듈체크값
-        //    }
-        // );
+        
+        $('#goolog').hide();
+        $('#aftercon').show();
         ///////////////////////////////////////////////////////////////////////////
-       
+        serlogin(response).then((axiresponse) => 
+           {
+             //구글아이디
+             fid(response.googleId);
+            //테마
+               fname(axiresponse.data.theme) 
+
+               //모듈체크값
+               mi.check=1
+               mi.value1=(axiresponse.data.moduleList[0])
+               mi.value2=(axiresponse.data.moduleList[1])
+               mi.value3=(axiresponse.data.moduleList[2])
+               mi.value4=(axiresponse.data.moduleList[3])
+              fch(mi)
+               //메모
+               axiresponse.data.memoList.forEach(function(page,index) {
+                 list[index]=page
+               })
+              fmemo(list)
+
+           }
+        );
+        ///////////////////////////////////////////////////////////////////////////
     }
     
-    // onSuccess().then((value) => 
     async function serlogin(res) {
         const data = {  
             id: res.googleId, 
@@ -95,7 +108,7 @@ export default function GoogleLoginBtn({}){
                     </Logg>
                     <Logg3 id={"aftercon"}hidden={true}><img id="im"width={30} height={30} padding={0} src={goore.url}/><Text>{goore.name}</Text></Logg3>
                 <Logg2 id={"mccon"}hidden={true}><MC id ={id} mi ={miob}/></Logg2>
-                <Logg4 id={"todocon"}hidden={true}><Todo  id ={id}/></Logg4>
+                <Logg4 id={"todocon"}hidden={true}><Todo  id ={id} list={memo}/></Logg4>
                 </Container>
         </div>
     )

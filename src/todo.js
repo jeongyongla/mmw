@@ -1,13 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import axios from 'axios';
 class Todo extends React.Component {
     
     state = {
-        todoList: []
+        todoList: [],
+        cnt:0
       };
   render() { 
     // console.log("rend");
     // console.log(this.state.todoList);
+    if(this.state.cnt==0){
+      if(this.props.id!==""){
+      this.setState({todoList:this.props.list,cnt:1})
+      }
+    }
+    // if(this.state.cnt==0){
+    // this.setState({todoList:["111","222"],cnt:1})
+    // }
+    // console.log(this.todoList)
     return (
       <Container>
         <Input placeholder="오늘 할 일" onKeyPress={this.handleInputKeyPress}></Input>
@@ -28,6 +39,16 @@ class Todo extends React.Component {
       this.setState(state => ({ todoList: [...state.todoList, value] }));
       event.target.value = "";
      }
+     const data = {  
+      id: this.props.id, 
+      content: value, 
+      on : 0}
+      let sendata = JSON.stringify(data)
+      axios.post('@@@@@@@@@@@@@@@@@@',sendata, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+              })   
     }
   };
   handleClickRemove = index => {
@@ -44,7 +65,16 @@ class Todo extends React.Component {
         }
         this.setState(state => ({todoList:this.state.todoList}));
         // this.setState(state => ({todoList:this.state.todoList.filter((element) => element !== index.target.innerText)}));
-
+        const data = {  
+          id: this.props.id, 
+          content: index.target.innerText, 
+          on : 1}
+          let sendata = JSON.stringify(data)
+          axios.post('@@@@@@@@@@@@@@@@@@',sendata, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+                  })   
     }
   };
 }

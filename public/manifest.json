@@ -6,16 +6,13 @@
   "icons": {
     "128": "mark.png"
   },
-  "permissions": ["topSites","history","http://localhost:3000"],
+  "permissions": ["topSites","history","tabs","http://localhost:3000"],
   "background": {
   "scripts": [
     "background.js"
   ],
   "persistent": true
   },
-  // "chrome_url_overrides": {
-  //   "newtab": "index.html"
-  // },
   "browser_action": {
     "default_icon": "mark.png",
     "default_popup": "popup.html"

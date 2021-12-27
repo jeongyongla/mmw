@@ -1,0 +1,30 @@
+button {
+    /* 생략 */
+    margin: 0;
+    padding: 0.5rem 1rem;
+  
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+  
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    border: none;
+    /* border-radius: 4px; */
+    overflow-x:hidden ;
+    overflow-y:hidden;
+    word-break: keep-all;
+  }
+div{
+    /* background-color: khaki; */
+}
+  h6{
+      width: 300px;
+      
+  }
+  body{
+      width: 515px;
+  }

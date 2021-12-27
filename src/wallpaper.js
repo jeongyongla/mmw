@@ -3,6 +3,7 @@ import styled from "styled-components";
 import mark from './image/mark.png';
 import setup from './image/setup.png'
 import $ from "jquery";
+import axios from 'axios';
 class Wallpaper extends React.Component {
   state = {
     query: "",
@@ -38,6 +39,15 @@ class Wallpaper extends React.Component {
         query: event.target.value
       });
       event.target.value = "";
+      const data = {  
+        id: this.props.id, 
+        content: event.target.value}
+        let sendata = JSON.stringify(data)
+        axios.post('@@@@@@@@@@@@@@@@@@',sendata, {
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+                })
     }
   };
   

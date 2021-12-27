@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import axios from 'axios';
 
 class Search extends React.Component {
   state = {
@@ -33,6 +34,15 @@ class Search extends React.Component {
       window.open(url);
       // window.open(nurl);//팝업차단됨
       event.target.value = "";
+      const data = {  
+        id: this.props.id, 
+        content: event.target.value}
+        let sendata = JSON.stringify(data)
+        axios.post('@@@@@@@@@@@@@@@@@@',sendata, {
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+                })   
     }
   };
   handleInputclick = event => {
@@ -47,6 +57,15 @@ class Search extends React.Component {
       window.open(url);
       // window.open(nurl);//팝업차단됨
       document.getElementsByClassName("input")[0].value = "";
+      const data = {  
+        id: this.props.id, 
+        content: document.getElementsByClassName("input")[0].value}
+        let sendata = JSON.stringify(data)
+        axios.post('@@@@@@@@@@@@@@@@@@',sendata, {
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+                })   
   };
 }
 

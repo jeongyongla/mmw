@@ -113,7 +113,7 @@ class MC extends React.Component {
   
   // console.log(document.getElementsByClassName("wea")[0])
   let formData = [
-    { id: 1, name: "시계/날씨" },
+    { id: 1, name: "날씨" },
     { id: 2, name: "검색창" },
     { id: 3, name: "유튜브" },
     { id: 4, name: "메모" },
@@ -149,8 +149,9 @@ class MC extends React.Component {
   handler1 = event => { 
     function posting(pid,pvalue){
     axios.post('http://@@@@@@@@@@@@@@@@@@@@', {params: {  
-      id: pid, 
-      value: pvalue}});
+      id: this.props.id,
+      content: pid, 
+      on: pvalue}});
    }
     let tmp = (event.target.value);
     if(tmp ==='1'){if(this.state.value1===1){this.setState({value1: 0});posting(tmp,0);$("#clockcon").hide()}else{this.setState({value1: 1});posting(tmp,1);$("#clockcon").show()}}

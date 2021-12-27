@@ -10,9 +10,11 @@ chrome.topSites.get((arr) => {
     arr.forEach(function(page,index) {
       // console.log(page+index);
       if(index<5){
-        document.getElementById(10+index).innerText=page.title;   
-        document.getElementById(10+index).className=page.url;
-        document.getElementById(10+index).addEventListener("click",winclick);
+        if(page.title!=null){
+          document.getElementById(10+index).innerText=page.title;   
+          document.getElementById(10+index).className=page.url;
+          document.getElementById(10+index).addEventListener("click",winclick);
+        }
       }
     })
     document.getElementById("99").className='http://localhost:3000';
@@ -21,6 +23,10 @@ chrome.topSites.get((arr) => {
 function winclick(params) {
   window.open(params.target.className);
 };
+
+chrome.tabs.getSelected(null, function(tab){
+  console.log(tab);
+});
 // function home() {
 //   window.open('http://localhost:3000');
 // }
