@@ -6,7 +6,9 @@ import Wallpaper from './wallpaper';
 import MC from "./modulecontrol";
 import $ from "jquery";
 import Todo from "./todo";
+import Search from "./search";
 const clientId = "230889010194-2225qvihcj6nqtn66mkoud8p2fnlqmmn.apps.googleusercontent.com";
+
 
 export default function GoogleLoginBtn({}){
     const mi = {
@@ -59,10 +61,17 @@ export default function GoogleLoginBtn({}){
                mi.value4=(axiresponse.data.moduleList[3])
               fch(mi)
                //메모
+               let tmp = ""
                axiresponse.data.memoList.forEach(function(page,index) {
-                 list[index]=page
+                   if(index==0){
+                       tmp=tmp+page
+                   }
+                   else{
+                       tmp=tmp+"/"+page
+                   }
                })
-              fmemo(list)
+               console.log(tmp)
+              fmemo(tmp)
 
            }
         );
@@ -97,7 +106,8 @@ export default function GoogleLoginBtn({}){
     return(
         <div>
             <Container>
-                <Wallpaper id ={id} name={name}/> 
+                <Wallpaper id ={id} name={name}/>
+                <Search id ={id}/>
                 <Logg id = {"goolog"}>
                 <GoogleLogin
                     clientId={clientId}

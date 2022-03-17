@@ -10,15 +10,25 @@ class Todo extends React.Component {
   render() { 
     // console.log("rend");
     // console.log(this.state.todoList);
-    if(this.state.cnt==0){
-      if(this.props.id!==""){
-      this.setState({todoList:this.props.list,cnt:1})
-      }
-    }
+    // if(this.state.cnt==0){
+    //   if(this.props.id!==""){
+    //   this.setState({todoList:this.props.list,cnt:1})
+    //   }
+    // }
     // if(this.state.cnt==0){
     // this.setState({todoList:["111","222"],cnt:1})
     // }
     // console.log(this.todoList)
+      if(this.state.cnt==0){
+          if(this.props.id!==""){
+              if(this.props.list!==""){
+                  console.log(this.props.id)
+                  console.log(this.props.list)
+                  const arr = this.props.list.split('/');
+                  this.setState({todoList:arr,cnt:1})
+              }
+          }
+      }
     return (
       <Container>
         <Input placeholder="To Do List" onKeyPress={this.handleInputKeyPress}></Input>
@@ -44,11 +54,13 @@ class Todo extends React.Component {
       content: value, 
       on : 1}
       let sendata = JSON.stringify(data)
-      axios.post('@@@@@@@@@@@@@@@@@@',sendata, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-              })   
+      if (this.props.id !== "") {
+          axios.post('http://localhost:8080/api/v1/memo', sendata, {
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          })
+      }
     }
   };
   handleClickRemove = index => {
@@ -70,11 +82,13 @@ class Todo extends React.Component {
           content: index.target.innerText, 
           on : 0}
           let sendata = JSON.stringify(data)
-          axios.post('@@@@@@@@@@@@@@@@@@',sendata, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-                  })   
+          if (this.props.id !== "") {
+              axios.post('http://localhost:8080/api/v1/memo', sendata, {
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
+              })
+          }
     }
   };
 }

@@ -33,23 +33,26 @@ class Wallpaper extends React.Component {
   handlesetup=event=>{
       $('#mccon').show();
   }
-  handleInputKeyPress = event => {
-    if (event.key === "Enter") {
-      this.setState({
-        query: event.target.value
-      });
-      event.target.value = "";
-      const data = {  
-        id: this.props.id, 
-        content: event.target.value}
-        let sendata = JSON.stringify(data)
-        axios.post('@@@@@@@@@@@@@@@@@@',sendata, {
-              headers: {
-                  'Content-Type': 'application/json'
-              }
-                })
-    }
-  };
+    handleInputKeyPress = event => {
+        if (event.key === "Enter") {
+            this.setState({
+                query: event.target.value
+            });
+            const data = {
+                id: "",
+                content: ""
+            }
+            data.id= this.props.id;
+            data.content= event.target.value;
+            let sendata = JSON.stringify(data)
+            axios.post('http://localhost:8080/api/v1/theme',sendata, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            event.target.value = "";
+        }
+    };
   
   onlogoclick = event => {
     // alert("Dd");

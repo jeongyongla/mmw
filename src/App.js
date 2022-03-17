@@ -16,7 +16,7 @@ class App extends React.Component {
         {/* <Wallpaper></Wallpaper> */}
         <GoogleLoginBtn></GoogleLoginBtn>
         <Clock></Clock>
-        <Search></Search>
+        {/*<Search></Search>*/}
         <Youtube></Youtube>
         {/* <History/> */}
         {/* <Check/> */}

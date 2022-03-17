@@ -148,12 +148,21 @@ class MC extends React.Component {
   }
   handler1 = event => { 
     let sid = this.props.id
-    function posting(pid,pvalue){
-    axios.post('http://@@@@@@@@@@@@@@@@@@@@', {params: {  
-      id: sid,
-      moduleId: pid, 
-      on: pvalue}});
-   }
+      function posting(pid,pvalue){
+          const data = {
+              id: sid,
+              moduleId: pid,
+              on: pvalue}
+          let sendata = JSON.stringify(data)
+          console.log(sendata)
+          if (sid !== "") {
+              axios.post('http://localhost:8080/api/v1/user_module', sendata, {
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
+              })
+          }
+      }
     let tmp = (event.target.value);
     if(tmp ==='1'){if(this.state.value1===1){this.setState({value1: 0});posting(tmp,0);$("#clockcon").hide()}else{this.setState({value1: 1});posting(tmp,1);$("#clockcon").show()}}
     if(tmp ==='2'){if(this.state.value2===1){this.setState({value2: 0});posting(tmp,0);$("#searchcon").hide()}else{this.setState({value2: 1});posting(tmp,1);$("#searchcon").show()}}
