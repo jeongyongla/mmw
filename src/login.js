@@ -7,10 +7,13 @@ import MC from "./modulecontrol";
 import $ from "jquery";
 import Todo from "./todo";
 import Search from "./search";
+import { GoogleLogout } from 'react-google-login';
+import { useGoogleLogin } from 'react-google-login'
 const clientId = "230889010194-2225qvihcj6nqtn66mkoud8p2fnlqmmn.apps.googleusercontent.com";
 
 
 export default function GoogleLoginBtn({}){
+  
     const mi = {
         check:0,
         value1 : 0,   //0 none 1 choose
@@ -34,20 +37,23 @@ export default function GoogleLoginBtn({}){
     const fgoo = (re) => setgoo(re);
     const [memo, setmemo] = useState("");
     const fmemo = (re) => setmemo(re);
+   
     const onSuccess = async(response) => {
         // const { googleId, profileObj : { email, name } } = response;
-        // console.log(response)
+        console.log(response)
         // console.log(response.googleID)
         // alert(response.yu.nv)
-        goo.name=response.yu.nf;
+        goo.name=response.profileObj.name;
         goo.url=response.profileObj.imageUrl;
         fgoo(goo)
         
         $('#goolog').hide();
         $('#aftercon').show();
+        $('#logoutlogout').show();
         ///////////////////////////////////////////////////////////////////////////
         serlogin(response).then((axiresponse) => 
            {
+             alert("server connet success")
              //구글아이디
              fid(response.googleId);
             //테마
@@ -72,26 +78,37 @@ export default function GoogleLoginBtn({}){
                })
                console.log(tmp)
               fmemo(tmp)
-
+               localStorage.setItem('csrf',response.crsf)       //csrf afteer server login
            }
         );
         ///////////////////////////////////////////////////////////////////////////
     }
-    
+    const logout = response => {
+      window.location.reload()
+      // window.sessionStorage.removeItem("access_token");
+      //  window.sessionStorage.removeItem("nama");
+      //  this.setState(state => ({
+      //     
+      //  }),
+      //  );       
+   }
     async function serlogin(res) {
         const data = {  
             id: res.googleId, 
-            name: res.yu.nf, 
-            email: res.yu.nv,
+            name: res.profileObj.name, 
+            email: res.profileObj.email,
             imageUrl: res.profileObj.imageUrl, 
             token: res.tokenId}
         let sendata = JSON.stringify(data)
         // alert(res.googleId);
         // const response = axios.post('http://localhost:8080/api/v1/user', {
         //     });
+        
+        const csrf = localStorage.getItem('csrf')
         const response = axios.post('http://localhost:8080/api/v1/user',sendata, {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'token':{csrf}    ///csrf token here!!!
             }
               })    
             // alert(res.yu.nv)
@@ -110,19 +127,32 @@ export default function GoogleLoginBtn({}){
                 <Search id ={id}/>
                 <Logg id = {"goolog"}>
                 <GoogleLogin
+                    
                     clientId={clientId}
                     responseType={"id_token"}
                     onSuccess={onSuccess}
                     onFailure={onFailure}
+                    isSignedIn={true}
                     />
+     
                     </Logg>
-                    <Logg3 id={"aftercon"}hidden={true}><img id="im"width={30} height={30} padding={0} src={goore.url}/><Text>{goore.name}</Text></Logg3>
+                 
+               
+                <Logg5 id={"logoutlogout"}hidden={true}top={30}width={30} height={60}> <GoogleLogout
+                    clientId= {clientId}
+                    buttonText="Logout"
+                    onLogoutSuccess={logout}
+                >
+                </GoogleLogout></Logg5>
+                <Logg3 id={"aftercon"}hidden={true}><img id="im"width={30} height={30} padding={0} src={goore.url}/><Text>{goore.name}</Text></Logg3>
                 <Logg2 id={"mccon"}hidden={true}><MC id ={id} mi ={miob}/></Logg2>
                 <Logg4 id={"todocon"}hidden={true}><Todo  id ={id} list={memo}/></Logg4>
                 </Container>
         </div>
     )
+
 }
+
 
 const Logg = styled.div`
    position: absolute;
@@ -144,6 +174,23 @@ const Logg = styled.div`
 const Logg3 = styled.div`
    position: absolute;
   top: 0;
+  right: 5px;
+  /* width: 500px;
+  height: 200px; */
+  color: black;
+  /* background-color: 
+  rgba(20, 20, 20, 0.1); */
+    /* linear-gradient(
+      rgba(20, 20, 20, 0.1),
+      rgba(20, 20, 20, 0)
+    ),white; */
+  margin-top: 40px;
+  font-size: 40px;
+  text-align: center;
+`;
+const Logg5 = styled.div`
+   position: absolute;
+  top: 50px;
   right: 5px;
   /* width: 500px;
   height: 200px; */

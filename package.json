@@ -2,6 +2,7 @@
   "name": "mmw",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://jeongyongla.github.io/mmw",
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
@@ -21,9 +22,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "webpack --mode production",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +47,10 @@
     ]
   },
   "devDependencies": {
-    "react-trigger-change": "^1.0.2"
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.5",
+    "babel-preset-react": "^6.24.1",
+    "react-trigger-change": "^1.0.2",
+    "webpack-cli": "^4.9.2"
   }
 }

@@ -5,6 +5,7 @@ import Clock from "./clock";
 import Search from "./search";
 import Youtube from "./youtube";
 import GoogleLoginBtn from "./login"
+import LoginBox from "./loginbox"
 // import Todo from "./todo";
 class App extends React.Component {
   render() { 
@@ -16,6 +17,7 @@ class App extends React.Component {
         {/* <Wallpaper></Wallpaper> */}
         <GoogleLoginBtn></GoogleLoginBtn>
         <Clock></Clock>
+        {/* <LoginBox></LoginBox> */}
         {/*<Search></Search>*/}
         <Youtube></Youtube>
         {/* <History/> */}
